@@ -2,12 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: var(--font-source-sans-3), sans-serif;
+@layer base {
+  html {
+    font-family: var(--font-source-sans-3), sans-serif;
+  }
+
+  body {
+    @apply bg-white font-sans text-body text-ink;
+    margin: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading;
+  }
+
+  ::selection {
+    @apply bg-gold text-navy;
+  }
 }
 
 :focus-visible {
-  outline: 3px solid currentColor;
+  outline: 3px solid theme("colors.gold");
   outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
