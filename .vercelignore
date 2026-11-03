@@ -1,0 +1,4 @@
+.env*
+truetxt.txt
+/supabase/.temp/
+/_to_delete/
