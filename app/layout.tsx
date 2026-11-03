@@ -1,19 +1,17 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Sora, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 
-// Self-hosted variable fonts (SIL OFL, from @fontsource-variable) so builds
-// don't depend on the Google Fonts API.
-const sora = localFont({
-  src: "../node_modules/@fontsource-variable/sora/files/sora-latin-wght-normal.woff2",
+const sora = Sora({
+  subsets: ["latin"],
   variable: "--font-sora",
-  weight: "100 800",
+  weight: ["500", "600", "700", "800"],
   display: "swap",
 });
-const sourceSans3 = localFont({
-  src: "../node_modules/@fontsource-variable/source-sans-3/files/source-sans-3-latin-wght-normal.woff2",
+const sourceSans3 = Source_Sans_3({
+  subsets: ["latin"],
   variable: "--font-source-sans-3",
-  weight: "200 900",
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
