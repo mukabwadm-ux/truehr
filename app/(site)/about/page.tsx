@@ -2,7 +2,11 @@ import { Check } from "lucide-react";
 
 import { AboutPreview } from "@/components/site/home/AboutPreview";
 import { CTABand } from "@/components/site/CTABand";
+import { TeamSection } from "@/components/site/home/TeamSection";
+import { ContentStatusNotice } from "@/components/site/ContentStatusNotice";
 import { PageHeader } from "@/components/site/PageHeader";
+import { getPublishedTeamMembers } from "@/lib/site-data";
+import { hasSupabasePublicEnv } from "@/lib/supabase/env";
 
 const waysOfWorking = [
   {
@@ -45,9 +49,17 @@ const reasons = [
   },
 ];
 
-export default function AboutPage() {
+export const dynamic = "force-dynamic";
+
+export default async function AboutPage() {
+  const contentConnected = hasSupabasePublicEnv();
+  const teamMembers = contentConnected ? await getPublishedTeamMembers() : [];
+
   return (
     <>
+      {!contentConnected ? (
+        <ContentStatusNotice content="team profiles" />
+      ) : null}
       <PageHeader
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
         description="Compliance-first HR and payroll support for growing businesses in Kenya."
@@ -90,23 +102,38 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section
-        aria-labelledby="about-team-title"
-        className="bg-white py-section-mobile lg:py-section"
-      >
-        <div className="container">
-          <h2
-            className="text-section font-extrabold text-navy"
-            id="about-team-title"
-          >
-            Meet the people behind your payroll
-          </h2>
-          <div className="mt-8 rounded-card border border-dashed border-border bg-mist p-6 text-body text-muted sm:p-8">
-            Approved team profiles will appear here when names, roles, phone
-            numbers, biographies and headshots are supplied.
+      {teamMembers.length > 0 ? (
+        <TeamSection
+          memberLimit={teamMembers.length}
+          members={teamMembers.map((member) => ({
+            name: member.name,
+            role: member.role,
+            phone: member.phone,
+            photoUrl: member.photo_url,
+            bio: member.bio,
+          }))}
+          minimumMembers={1}
+          showBio
+        />
+      ) : (
+        <section
+          aria-labelledby="about-team-title"
+          className="bg-white py-section-mobile lg:py-section"
+        >
+          <div className="container">
+            <h2
+              className="text-section font-extrabold text-navy"
+              id="about-team-title"
+            >
+              Meet the people behind your payroll
+            </h2>
+            <div className="mt-8 rounded-card border border-dashed border-border bg-mist p-6 text-body text-muted sm:p-8">
+              Approved team profiles will appear here when names, roles, phone
+              numbers, biographies and headshots are supplied.
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <section
         aria-labelledby="why-trueward-title"

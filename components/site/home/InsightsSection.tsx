@@ -10,11 +10,18 @@ export interface InsightPost {
   category: string;
   author: string;
   publishedAt: string;
-  coverUrl: string;
+  coverUrl: string | null;
 }
 
 interface InsightsSectionProps {
   posts: readonly InsightPost[];
+}
+
+function formatPublishedDate(value: string) {
+  return new Intl.DateTimeFormat("en-KE", {
+    dateStyle: "medium",
+    timeZone: "Africa/Nairobi",
+  }).format(new Date(value));
 }
 
 export function InsightsSection({ posts }: InsightsSectionProps) {
@@ -44,15 +51,21 @@ export function InsightsSection({ posts }: InsightsSectionProps) {
                   className="block"
                   href={`/insights/${post.slug}`}
                 >
-                  <div className="relative aspect-[16/10] bg-navy-soft">
-                    <Image
-                      alt=""
-                      className="object-cover"
-                      fill
-                      sizes="(max-width: 767px) 90vw, (max-width: 1023px) 45vw, 30vw"
-                      src={post.coverUrl}
-                    />
-                  </div>
+                  {post.coverUrl ? (
+                    <div className="relative aspect-[16/10] bg-navy-soft">
+                      <Image
+                        alt=""
+                        className="object-cover"
+                        fill
+                        sizes="(max-width: 767px) 90vw, (max-width: 1023px) 45vw, 30vw"
+                        src={post.coverUrl}
+                      />
+                    </div>
+                  ) : (
+                    <div className="flex aspect-[16/10] items-center justify-center bg-navy-soft px-4 text-center text-sm text-on-navy">
+                      Article cover image to be supplied
+                    </div>
+                  )}
                   <div className="p-5">
                     <p className="font-heading text-sm font-bold text-gold-text">
                       {post.category}
@@ -65,7 +78,7 @@ export function InsightsSection({ posts }: InsightsSectionProps) {
                         className="rounded-full bg-navy px-3 py-1 text-xs font-semibold text-white"
                         dateTime={post.publishedAt}
                       >
-                        {post.publishedAt}
+                        {formatPublishedDate(post.publishedAt)}
                       </time>
                       <span className="text-sm text-muted">
                         By {post.author}

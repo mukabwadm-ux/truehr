@@ -8,16 +8,27 @@ export interface TeamMember {
   role: string;
   phone: string;
   photoUrl?: string | null;
+  bio?: string | null;
 }
 
 interface TeamSectionProps {
   members: readonly TeamMember[];
+  minimumMembers?: number;
+  memberLimit?: number;
+  showBio?: boolean;
 }
 
-export function TeamSection({ members }: TeamSectionProps) {
-  if (members.length < 2) {
+export function TeamSection({
+  members,
+  minimumMembers = 2,
+  memberLimit = 4,
+  showBio = false,
+}: TeamSectionProps) {
+  if (members.length < minimumMembers) {
     return null;
   }
+
+  const displayedMembers = members.slice(0, memberLimit);
 
   return (
     <section
@@ -31,7 +42,7 @@ export function TeamSection({ members }: TeamSectionProps) {
           title="Meet the people behind your payroll"
         />
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {members.slice(0, 4).map((member, index) => (
+          {displayedMembers.map((member, index) => (
             <article
               className="overflow-hidden rounded-card bg-white p-5 shadow-sm"
               key={member.name}
@@ -59,6 +70,11 @@ export function TeamSection({ members }: TeamSectionProps) {
               <p className="mt-1 font-heading text-sm font-bold text-gold-text">
                 {member.role}
               </p>
+              {showBio && member.bio ? (
+                <p className="mt-3 text-sm leading-relaxed text-muted">
+                  {member.bio}
+                </p>
+              ) : null}
               <a
                 className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm text-muted hover:text-navy"
                 href={`tel:${member.phone.replace(/[^\d+]/g, "")}`}

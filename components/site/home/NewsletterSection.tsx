@@ -1,8 +1,7 @@
-import Link from "next/link";
 import { Mail } from "lucide-react";
 
 import { TriangleMark } from "@/components/brand/TriangleMark";
-import { Button } from "@/components/ui/button";
+import { NewsletterSubscribeForm } from "@/components/forms/NewsletterSubscribeForm";
 
 export function NewsletterSection() {
   return (
@@ -29,54 +28,8 @@ export function NewsletterSection() {
           </p>
         </div>
 
-        <div
-          aria-describedby="newsletter-status"
-          aria-labelledby="newsletter-title"
-          className="rounded-card bg-white p-5 text-ink shadow-soft sm:p-7"
-          role="group"
-        >
-          <label className="sr-only" htmlFor="newsletter-email">
-            Email address
-          </label>
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:rounded-full sm:border sm:border-border sm:p-1">
-            <input
-              autoComplete="email"
-              className="min-h-12 min-w-0 flex-1 rounded-full border border-border px-5 text-body text-ink placeholder:text-muted focus-visible:outline-gold sm:border-0"
-              disabled
-              id="newsletter-email"
-              placeholder="Your work email"
-              type="email"
-            />
-            <Button className="shrink-0" disabled variant="gold">
-              Subscribe
-            </Button>
-          </div>
-          <label className="mt-5 flex items-start gap-3 text-sm text-muted">
-            <input
-              className="mt-1 h-4 w-4 accent-navy"
-              disabled
-              type="checkbox"
-            />
-            <span>
-              Send me the monthly employer update. I can unsubscribe at any
-              time.
-            </span>
-          </label>
-          <p
-            className="mt-3 text-sm text-muted"
-            id="newsletter-status"
-            role="status"
-          >
-            Newsletter sign-up will be enabled when secure submissions are
-            connected.
-          </p>
-          <p className="mt-3 text-sm text-muted">
-            Read our{" "}
-            <Link className="font-semibold text-navy underline" href="/privacy">
-              privacy notice
-            </Link>
-            .
-          </p>
+        <div className="rounded-card bg-white p-5 text-ink shadow-soft sm:p-7">
+          <NewsletterSubscribeForm />
         </div>
       </div>
     </section>
