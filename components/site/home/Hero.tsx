@@ -56,16 +56,13 @@ export function Hero() {
           />
           <IllustrationFrame className="relative mx-auto aspect-[4/5] w-[86%] overflow-hidden rounded-t-[44%] bg-navy-soft shadow-soft">
             <Image
-              alt="Illustrated portrait placeholder; approved consultant photo to be supplied"
-              className="object-cover"
+              alt="Smiling professional wearing a navy suit"
+              className="object-contain"
               fill
               priority
               sizes="(max-width: 1023px) 80vw, 40vw"
-              src="/brand/portrait-illustration-placeholder.svg"
+              src="/brand/hero-consultant.png"
             />
-            <figcaption className="absolute bottom-4 left-4 right-4 rounded-inner bg-navy/90 px-3 py-2 text-center text-xs text-on-navy">
-              Portrait illustration placeholder — approved photo to be supplied
-            </figcaption>
           </IllustrationFrame>
 
           <div className="animate-fade-rise animation-delay-200 absolute -bottom-8 left-0 z-20 flex max-w-[19rem] items-center gap-4 rounded-card bg-white p-4 text-ink shadow-soft sm:-left-4 sm:p-5">
