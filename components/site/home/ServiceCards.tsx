@@ -1,11 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  ClipboardCheck,
-  UsersRound,
-  WalletCards,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { IllustrationFrame } from "@/components/brand/IllustrationFrame";
 import { TriangleMark } from "@/components/brand/TriangleMark";
@@ -16,32 +11,32 @@ const services: {
   title: string;
   description: string;
   href: string;
-  icon: LucideIcon;
-  illustration: string;
+  image: string;
+  imageAlt: string;
 }[] = [
   {
     title: "HR Consulting",
     description:
       "Policies, contracts, disciplinary support and performance systems that keep your workplace fair and your business protected.",
     href: "/services/hr-consulting",
-    icon: UsersRound,
-    illustration: "Workplace image to be supplied",
+    image: "/services/hr-consulting.jpg",
+    imageAlt: "HR consulting team discussing workplace talent and hiring",
   },
   {
     title: "Payroll Services",
     description:
       "Accurate monthly payroll, secure payslips and every statutory deduction calculated, filed and remitted on time.",
     href: "/services/payroll",
-    icon: WalletCards,
-    illustration: "Payroll image to be supplied",
+    image: "/services/payroll-services.jpg",
+    imageAlt: "Digital payroll dashboard with payslips, payments and reports",
   },
   {
     title: "Compliance Audits",
     description:
       "A full health check of your contracts, files and remittances against Kenyan law, with a clear plan to fix any gaps.",
     href: "/services/compliance-audits",
-    icon: ClipboardCheck,
-    illustration: "Compliance image to be supplied",
+    image: "/services/compliance-audits.jpg",
+    imageAlt: "HR professional reviewing a compliance checklist and records",
   },
 ];
 
@@ -61,7 +56,6 @@ export function ServiceCards() {
         />
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {services.map((service, index) => {
-            const Icon = service.icon;
             const featured = index === 1;
 
             return (
@@ -75,19 +69,13 @@ export function ServiceCards() {
               >
                 <div className="relative">
                   <IllustrationFrame className="aspect-[16/10] bg-mist shadow-none">
-                    <div
-                      aria-hidden="true"
-                      className="absolute inset-0 flex items-center justify-center bg-mist"
-                    >
-                      <Icon
-                        aria-hidden="true"
-                        className="text-navy/35"
-                        size={72}
-                      />
-                    </div>
-                    <figcaption className="absolute bottom-3 left-3 right-3 rounded-inner bg-white/90 px-3 py-2 text-center text-xs text-muted">
-                      {service.illustration}
-                    </figcaption>
+                    <Image
+                      alt={service.imageAlt}
+                      className="object-cover"
+                      fill
+                      sizes="(max-width: 1023px) 90vw, 30vw"
+                      src={service.image}
+                    />
                   </IllustrationFrame>
                   <span className="absolute -bottom-4 left-6 flex h-12 w-12 rotate-45 items-center justify-center rounded-inner bg-navy text-gold shadow-soft">
                     <TriangleMark className="-rotate-45 text-gold" />
