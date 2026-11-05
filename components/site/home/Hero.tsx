@@ -48,47 +48,53 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-[38rem] pb-10 pr-2 sm:pb-12 sm:pr-4">
-          <div className="relative mr-[12%] aspect-[1.3/1] overflow-hidden rounded-[1.25rem] border-[5px] border-navy bg-white shadow-soft sm:rounded-[1.6rem]">
-            <Image
-              alt="Business owner celebrating success above Nairobi"
-              className="object-cover object-[center_45%]"
-              fill
-              unoptimized
-              priority
-              sizes="(max-width: 1023px) 78vw, 48vw"
-              src={photos.hero}
-            />
+        <div className="relative mx-auto aspect-[1.12/1] w-full max-w-[38rem]">
+          <div className="absolute left-[3%] top-[3%] h-[79%] w-[70%] overflow-hidden rounded-t-[1.5rem] rounded-bl-[5.5rem] rounded-br-[2rem] border-[6px] border-navy bg-white p-[2px] shadow-soft sm:rounded-t-[1.75rem] sm:rounded-bl-[7rem]">
+            <div className="relative h-full w-full overflow-hidden rounded-t-[1rem] rounded-bl-[5rem] rounded-br-[1.5rem]">
+              <Image
+                alt="Business owner celebrating success above Nairobi"
+                className="object-cover object-[center_45%]"
+                fill
+                unoptimized
+                priority
+                sizes="(max-width: 1023px) 58vw, 38vw"
+                src={photos.hero}
+              />
+            </div>
           </div>
 
-          <div className="absolute right-0 top-[12%] z-10 aspect-square w-[31%] overflow-hidden rounded-2xl border-4 border-white bg-white shadow-soft sm:rounded-[1.25rem]">
-            <Image
-              alt="Employee smiling after receiving a salary notification"
-              className="object-cover"
-              fill
-              unoptimized
-              sizes="(max-width: 639px) 30vw, 12vw"
-              src={photos.employee}
-            />
+          <div className="absolute right-[1%] top-[14%] z-10 aspect-square w-[37%] rounded-[1.25rem] border-[5px] border-[#f5e8bd] bg-white p-[2px] shadow-soft sm:rounded-[1.5rem]">
+            <div className="relative h-full w-full overflow-hidden rounded-[0.9rem] sm:rounded-[1.1rem]">
+              <Image
+                alt="Employee smiling after receiving a salary notification"
+                className="object-cover"
+                fill
+                unoptimized
+                sizes="(max-width: 639px) 34vw, 15vw"
+                src={photos.employee}
+              />
+            </div>
           </div>
 
-          <div className="absolute bottom-8 right-[3%] z-10 aspect-[1.25/1] w-[39%] overflow-hidden rounded-2xl border-4 border-white bg-white shadow-soft sm:bottom-10 sm:rounded-[1.25rem]">
-            <Image
-              alt="Founder reviewing documents at work"
-              className="object-cover"
-              fill
-              unoptimized
-              sizes="(max-width: 639px) 38vw, 16vw"
-              src={photos.founder}
-            />
+          <div className="absolute bottom-[5%] right-[8%] z-10 aspect-[1.2/1] w-[43%] rounded-[1.25rem] border-[5px] border-navy bg-white p-[2px] shadow-soft sm:rounded-[1.5rem]">
+            <div className="relative h-full w-full overflow-hidden rounded-[0.9rem] sm:rounded-[1.1rem]">
+              <Image
+                alt="Founder reviewing documents at work"
+                className="object-cover"
+                fill
+                unoptimized
+                sizes="(max-width: 639px) 40vw, 18vw"
+                src={photos.founder}
+              />
+            </div>
           </div>
 
-          <div className="absolute bottom-0 left-0 z-20 flex max-w-[17rem] items-center gap-2.5 rounded-2xl bg-white px-3 py-2.5 text-navy shadow-soft sm:px-4">
+          <div className="absolute bottom-[10%] left-[6%] z-20 flex max-w-[68%] -rotate-[7deg] items-center gap-2 rounded-xl bg-white px-2.5 py-2 text-navy shadow-soft sm:gap-2.5 sm:rounded-2xl sm:px-4 sm:py-2.5">
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gold text-navy">
               <ShieldCheck aria-hidden="true" size={19} />
             </span>
             <span className="min-w-0">
-              <span className="flex items-center gap-1 font-heading text-xs font-bold">
+              <span className="flex items-center gap-1 font-heading text-[10px] font-bold sm:text-xs">
                 <Check
                   aria-hidden="true"
                   className="text-gold-text"
@@ -96,7 +102,7 @@ export function Hero() {
                 />
                 Statutory returns filed
               </span>
-              <span className="mt-0.5 block text-[10px] leading-snug text-muted sm:text-xs">
+              <span className="mt-0.5 block text-[9px] leading-snug text-muted sm:text-[10px]">
                 PAYE, NSSF, SHIF, Housing Levy, NITA
               </span>
             </span>
