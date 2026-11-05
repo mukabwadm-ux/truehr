@@ -1,85 +1,103 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Check, Play, ShieldCheck } from "lucide-react";
+import { Check, ShieldCheck } from "lucide-react";
 
-import { IllustrationFrame } from "@/components/brand/IllustrationFrame";
-import { TriangleMark } from "@/components/brand/TriangleMark";
 import { Button } from "@/components/ui/button";
-import { Eyebrow } from "@/components/site/Eyebrow";
+
+const photos = {
+  hero: "/images/Man_in_suit_celebrating_victory_1bf755b5.jpg",
+  employee: "/images/Employee_smiling_at_salary_notif…_79f1462d.jpg",
+  founder: "/images/Founder_reviewing_documents_at_desk_db1882ce.jpg",
+};
 
 export function Hero() {
   return (
     <section
       aria-labelledby="home-hero-title"
-      className="relative isolate overflow-hidden bg-navy text-white"
+      className="overflow-hidden bg-mist"
     >
-      <TriangleMark className="absolute -right-20 top-12 -z-10 h-80 w-80 text-white/5" />
-      <div className="container grid items-center gap-16 py-section-mobile lg:min-h-[42rem] lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:py-section">
-        <div className="animate-fade-rise max-w-2xl">
-          <Eyebrow className="text-gold">
-            HR consulting and payroll, Nairobi
-          </Eyebrow>
+      <div className="container grid items-center gap-8 py-12 sm:py-16 lg:min-h-[32rem] lg:grid-cols-[0.92fr_1.08fr] lg:gap-12 lg:py-14">
+        <div className="max-w-xl">
+          <p className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-navy shadow-sm">
+            <span className="rounded-full bg-gold px-2 py-0.5 font-bold text-navy">
+              9th
+            </span>
+            Every remittance filed on time
+          </p>
           <h1
-            className="mt-5 text-display font-extrabold text-white"
+            className="mt-5 max-w-lg text-5xl font-extrabold leading-[0.98] tracking-[-0.045em] text-navy sm:text-6xl"
             id="home-hero-title"
           >
-            Expert HR support for growing businesses.
+            Your people, paid right and protected.
           </h1>
-          <p className="mt-6 max-w-xl text-lead text-on-navy">
-            We run your payroll, file every statutory return and put HR policies
-            in place that protect your business and treat your people fairly.
+          <p className="mt-5 max-w-lg text-base leading-relaxed text-muted sm:text-lg">
+            HR consulting and payroll for growing Kenyan businesses. We run your
+            payroll, file every statutory return and put the policies in place
+            that keep your workplace fair.
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-5">
-            <Button asChild variant="gold">
-              <Link href="/contact#book">Get in touch</Link>
+          <div className="mt-7 flex flex-wrap items-center gap-3">
+            <Button asChild size="sm" variant="navy">
+              <Link href="/contact#book">Book a compliance health check</Link>
             </Button>
             <a
-              className="inline-flex min-h-12 items-center gap-3 font-heading font-bold text-white hover:text-gold"
-              href="#services"
+              className="inline-flex min-h-11 items-center rounded-full border border-navy/20 bg-white px-5 font-heading text-sm font-bold text-navy transition-colors hover:border-navy"
+              href="tel:+254797500747"
             >
-              <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-on-navy/50 text-gold">
-                <Play aria-hidden="true" fill="currentColor" size={16} />
-              </span>
-              See how we work
+              Call +254 797 500747
             </a>
           </div>
         </div>
 
-        <div className="animate-fade-rise animation-delay-100 relative mx-auto w-full max-w-[32rem]">
-          <div
-            aria-hidden="true"
-            className="absolute -bottom-5 right-2 aspect-square w-[74%] rounded-full bg-gold"
-          />
-          <div
-            aria-hidden="true"
-            className="dot-grid absolute -right-2 top-12 z-10 h-28 w-28 opacity-70"
-          />
-          <IllustrationFrame className="relative mx-auto aspect-[4/5] w-[86%] overflow-hidden rounded-t-[44%] bg-navy-soft shadow-soft">
+        <div className="relative mx-auto w-full max-w-[38rem] pb-10 pr-2 sm:pb-12 sm:pr-4">
+          <div className="relative mr-[12%] aspect-[1.3/1] overflow-hidden rounded-[1.25rem] border-[5px] border-navy bg-white shadow-soft sm:rounded-[1.6rem]">
             <Image
-              alt="Smiling professional wearing a navy suit"
-              className="object-contain"
+              alt="Business owner celebrating success above Nairobi"
+              className="object-cover object-[center_45%]"
               fill
+              unoptimized
               priority
-              sizes="(max-width: 1023px) 80vw, 40vw"
-              src="/brand/hero-consultant.png"
+              sizes="(max-width: 1023px) 78vw, 48vw"
+              src={photos.hero}
             />
-          </IllustrationFrame>
+          </div>
 
-          <div className="animate-fade-rise animation-delay-200 absolute -bottom-8 left-0 z-20 flex max-w-[19rem] items-center gap-4 rounded-card bg-white p-4 text-ink shadow-soft sm:-left-4 sm:p-5">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-inner bg-navy text-gold">
-              <ShieldCheck aria-hidden="true" size={24} />
+          <div className="absolute right-0 top-[12%] z-10 aspect-square w-[31%] overflow-hidden rounded-2xl border-4 border-white bg-white shadow-soft sm:rounded-[1.25rem]">
+            <Image
+              alt="Employee smiling after receiving a salary notification"
+              className="object-cover"
+              fill
+              unoptimized
+              sizes="(max-width: 639px) 30vw, 12vw"
+              src={photos.employee}
+            />
+          </div>
+
+          <div className="absolute bottom-8 right-[3%] z-10 aspect-[1.25/1] w-[39%] overflow-hidden rounded-2xl border-4 border-white bg-white shadow-soft sm:bottom-10 sm:rounded-[1.25rem]">
+            <Image
+              alt="Founder reviewing documents at work"
+              className="object-cover"
+              fill
+              unoptimized
+              sizes="(max-width: 639px) 38vw, 16vw"
+              src={photos.founder}
+            />
+          </div>
+
+          <div className="absolute bottom-0 left-0 z-20 flex max-w-[17rem] items-center gap-2.5 rounded-2xl bg-white px-3 py-2.5 text-navy shadow-soft sm:px-4">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gold text-navy">
+              <ShieldCheck aria-hidden="true" size={19} />
             </span>
-            <span>
-              <span className="flex items-center gap-2 font-heading text-sm font-bold text-navy">
+            <span className="min-w-0">
+              <span className="flex items-center gap-1 font-heading text-xs font-bold">
                 <Check
                   aria-hidden="true"
                   className="text-gold-text"
-                  size={16}
+                  size={14}
                 />
                 Statutory returns filed
               </span>
-              <span className="mt-1 block text-sm text-muted">
-                PAYE, NSSF, SHIF, Housing Levy
+              <span className="mt-0.5 block text-[10px] leading-snug text-muted sm:text-xs">
+                PAYE, NSSF, SHIF, Housing Levy, NITA
               </span>
             </span>
           </div>

@@ -26,33 +26,35 @@ export function NewsletterSubscribeForm() {
       <label className="sr-only" htmlFor="newsletter-email">
         Email address
       </label>
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:rounded-full sm:border sm:border-border sm:p-1">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-1 sm:rounded-full sm:border sm:border-border sm:p-1">
         <input
           aria-describedby={
             state.fieldErrors.email ? "newsletter-email-error" : undefined
           }
           aria-invalid={Boolean(state.fieldErrors.email)}
           autoComplete="email"
-          className="min-h-12 min-w-0 flex-1 rounded-full border border-border px-5 text-body text-ink placeholder:text-muted focus-visible:outline-gold sm:border-0"
+          className="min-h-11 min-w-0 flex-1 rounded-full border border-border px-4 text-sm text-ink placeholder:text-muted focus-visible:outline-gold sm:border-0"
           id="newsletter-email"
           name="email"
           placeholder="Your work email"
           required
           type="email"
         />
-        <SubmitButton pendingLabel="Subscribing...">Subscribe</SubmitButton>
+        <SubmitButton pendingLabel="Subscribing..." variant="navy">
+          Subscribe
+        </SubmitButton>
       </div>
       <FieldError
         id="newsletter-email-error"
         message={state.fieldErrors.email}
       />
-      <label className="mt-5 flex items-start gap-3 text-sm text-muted">
+      <label className="mt-3 flex items-start gap-2 text-[10px] leading-relaxed text-muted">
         <input
           aria-describedby={
             state.fieldErrors.consent ? "newsletter-consent-error" : undefined
           }
           aria-invalid={Boolean(state.fieldErrors.consent)}
-          className="mt-1 h-4 w-4 accent-navy"
+          className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-navy"
           name="consent"
           required
           type="checkbox"
@@ -63,7 +65,7 @@ export function NewsletterSubscribeForm() {
         id="newsletter-consent-error"
         message={state.fieldErrors.consent}
       />
-      <p className="mt-3 text-sm text-muted">
+      <p className="mt-2 text-[10px] text-muted">
         Read our{" "}
         <Link className="font-semibold text-navy underline" href="/privacy">
           privacy notice

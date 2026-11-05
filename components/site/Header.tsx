@@ -2,16 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ChevronDown, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 
 import { Logo } from "@/components/brand/Logo";
 import { Button, buttonVariants } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import {
   Sheet,
   SheetClose,
@@ -29,15 +23,15 @@ const serviceLinks = [
 ];
 
 const siteLinks = [
-  { href: "/", label: "Home" },
+  { href: "/#services", label: "Services" },
+  { href: "/#approach", label: "Our work" },
   { href: "/about", label: "About" },
   { href: "/briefings", label: "Briefings" },
-  { href: "/insights", label: "Insights" },
   { href: "/contact", label: "Contact" },
 ];
 
 const navLinkClass =
-  "inline-flex min-h-11 items-center font-heading text-sm font-semibold text-on-navy transition-colors hover:text-white";
+  "inline-flex min-h-10 items-center font-heading text-xs font-semibold text-on-navy transition-colors hover:text-white";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -54,52 +48,20 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b border-navy-soft/40 bg-navy transition-shadow ${
+      className={`sticky top-0 z-50 border-b border-white/10 bg-navy-deep transition-shadow ${
         isScrolled ? "shadow-soft" : "shadow-none"
       }`}
       data-scrolled={isScrolled}
     >
-      <div className="container flex min-h-20 items-center justify-between gap-6">
-        <Logo />
+      <div className="container flex min-h-16 items-center justify-between gap-6">
+        <Logo className="text-base" />
 
         <nav
           aria-label="Primary navigation"
-          className="hidden items-center gap-5 lg:flex"
+          className="hidden items-center gap-6 lg:flex"
         >
-          <ul className="flex items-center gap-5">
-            {siteLinks.slice(0, 2).map((link) => (
-              <li key={link.href}>
-                <Link className={navLinkClass} href={link.href}>
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-            <li>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <button className={`${navLinkClass} gap-1`} type="button">
-                    Services
-                    <ChevronDown aria-hidden="true" size={16} />
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  align="start"
-                  className="border-line bg-white text-ink"
-                >
-                  {serviceLinks.map((link) => (
-                    <DropdownMenuItem asChild key={link.href}>
-                      <Link
-                        className="min-h-11 cursor-pointer"
-                        href={link.href}
-                      >
-                        {link.label}
-                      </Link>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </li>
-            {siteLinks.slice(2).map((link) => (
+          <ul className="flex items-center gap-6">
+            {siteLinks.map((link) => (
               <li key={link.href}>
                 <Link className={navLinkClass} href={link.href}>
                   {link.label}
@@ -140,7 +102,7 @@ export function Header() {
               </div>
               <nav aria-label="Mobile navigation">
                 <ul className="space-y-1">
-                  {siteLinks.slice(0, 2).map((link) => (
+                  {siteLinks.map((link) => (
                     <li key={link.href}>
                       <SheetClose asChild>
                         <Link
@@ -152,26 +114,11 @@ export function Header() {
                       </SheetClose>
                     </li>
                   ))}
-                  <li className="px-3 py-3 font-heading text-sm font-bold text-gold-text">
-                    Services
-                  </li>
                   {serviceLinks.map((link) => (
                     <li key={link.href}>
                       <SheetClose asChild>
                         <Link
-                          className="flex min-h-12 items-center rounded-inner px-6 font-heading font-semibold text-navy hover:bg-mist"
-                          href={link.href}
-                        >
-                          {link.label}
-                        </Link>
-                      </SheetClose>
-                    </li>
-                  ))}
-                  {siteLinks.slice(2).map((link) => (
-                    <li key={link.href}>
-                      <SheetClose asChild>
-                        <Link
-                          className="flex min-h-12 items-center rounded-inner px-3 font-heading font-semibold text-navy hover:bg-mist"
+                          className="flex min-h-10 items-center rounded-inner px-6 text-sm text-muted hover:bg-mist"
                           href={link.href}
                         >
                           {link.label}

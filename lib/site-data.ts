@@ -26,84 +26,22 @@ export type BriefingSummary = Pick<
 
 export async function getHomepageData() {
   const client = createPublicDataClient();
-  const now = new Date().toISOString();
-  const [briefings, teamMembers, testimonials, posts, logos] =
-    await Promise.all([
-      client
-        .from("briefings")
-        .select(
-          "id, slug, title, summary, format, topic, starts_at, ends_at, venue, speaker_name, speaker_role, speaker_photo_url, agenda, capacity, image_url, published",
-        )
-        .eq("published", true)
-        .gt("starts_at", now)
-        .order("starts_at", { ascending: true })
-        .limit(2),
-      client
-        .from("team_members")
-        .select("id, name, role, phone, photo_url, bio, sort_order, published")
-        .eq("published", true)
-        .order("sort_order", { ascending: true })
-        .limit(4),
-      client
-        .from("testimonials")
-        .select(
-          "id, quote, client_name, client_role, company, photo_url, consent_confirmed, sort_order, published",
-        )
-        .eq("published", true)
-        .eq("consent_confirmed", true)
-        .order("sort_order", { ascending: true })
-        .limit(10),
-      client
-        .from("posts")
-        .select(
-          "id, slug, title, excerpt, body_md, category, author_name, cover_url, published_at, published, seo_title, seo_description",
-        )
-        .eq("published", true)
-        .order("published_at", { ascending: false })
-        .limit(3),
-      client
-        .from("client_logos")
-        .select(
-          "id, company, logo_url, website_url, consent_confirmed, sort_order, published",
-        )
-        .eq("published", true)
-        .eq("consent_confirmed", true)
-        .order("sort_order", { ascending: true })
-        .limit(6),
-    ]);
+  const { data, error } = await client
+    .from("testimonials")
+    .select(
+      "id, quote, client_name, client_role, company, photo_url, consent_confirmed, sort_order, published",
+    )
+    .eq("published", true)
+    .eq("consent_confirmed", true)
+    .order("sort_order", { ascending: true })
+    .limit(10);
 
-  const failedQuery = [
-    { name: "briefings", error: briefings.error },
-    { name: "team members", error: teamMembers.error },
-    { name: "testimonials", error: testimonials.error },
-    { name: "posts", error: posts.error },
-    { name: "client logos", error: logos.error },
-  ].find((query) => query.error);
-
-  if (failedQuery?.error) {
-    console.error(
-      `Could not load published ${failedQuery.name}.`,
-      failedQuery.error,
-    );
-    throw new Error(`Could not load published ${failedQuery.name}.`);
+  if (error) {
+    console.error("Could not load published testimonials.", error);
+    throw new Error("Could not load published testimonials.");
   }
 
-  const publishedPosts = (posts.data ?? []).map((post) => {
-    if (!post.published_at) {
-      console.error("A published insight has no publication date.", post.id);
-      throw new Error("A published insight is missing its publication date.");
-    }
-
-    return { ...post, published_at: post.published_at };
-  });
-
-  return {
-    briefings: briefings.data ?? [],
-    teamMembers: teamMembers.data ?? [],
-    testimonials: testimonials.data ?? [],
-    posts: publishedPosts,
-    logos: logos.data ?? [],
-  };
+  return data ?? [];
 }
 
 export async function getPublishedTeamMembers() {
