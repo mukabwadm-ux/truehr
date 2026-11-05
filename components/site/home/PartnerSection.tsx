@@ -1,6 +1,8 @@
 import Image from "next/image";
 
-const founderPhoto = "/images/Founder_reviewing_documents_at_desk_db1882ce.jpg";
+const teamPhoto = "/images/truewardhr-team.jpg";
+const briefingPhoto = "/images/employer-briefing.jpg";
+const officePhoto = "/images/office-signage.jpg";
 
 export function PartnerSection() {
   return (
@@ -39,25 +41,47 @@ export function PartnerSection() {
         </div>
 
         <div className="grid min-h-[19rem] grid-cols-[1fr_1fr] grid-rows-2 gap-3 sm:min-h-[22rem]">
-          <figure className="relative row-span-2 overflow-hidden rounded-2xl bg-navy">
-            <Image
-              alt="TruewardHR founder reviewing documents at a desk"
-              className="object-cover"
-              fill
-              unoptimized
-              sizes="(max-width: 1023px) 45vw, 22vw"
-              src={founderPhoto}
-            />
+          <figure className="relative row-span-2 overflow-hidden rounded-2xl bg-white p-[2px]">
+            <div className="relative h-full w-full overflow-hidden rounded-[14px]">
+              <Image
+                alt="The TruewardHR team collaborating in their office"
+                className="object-cover"
+                fill
+                unoptimized
+                sizes="(max-width: 1023px) 45vw, 22vw"
+                src={teamPhoto}
+              />
+            </div>
           </figure>
-          <figure className="flex items-end rounded-2xl bg-[#e6d090] p-3">
-            <figcaption className="text-[10px] font-medium text-navy/70">
-              Photo: employer briefing session
-            </figcaption>
+          <figure className="relative overflow-hidden rounded-2xl bg-white p-[2px]">
+            <div className="relative h-full w-full overflow-hidden rounded-[14px]">
+              <Image
+                alt="Employer briefing session on employment law and HR"
+                className="object-cover"
+                fill
+                unoptimized
+                sizes="(max-width: 1023px) 40vw, 18vw"
+                src={briefingPhoto}
+              />
+              <figcaption className="absolute bottom-2 left-2 rounded bg-navy/70 px-2 py-1 text-[10px] font-medium text-white">
+                Employer briefing session
+              </figcaption>
+            </div>
           </figure>
-          <figure className="flex items-end rounded-2xl bg-[#cbd6e7] p-3">
-            <figcaption className="text-[10px] font-medium text-navy/70">
-              Photo: office or signage detail
-            </figcaption>
+          <figure className="relative overflow-hidden rounded-2xl bg-white p-[2px]">
+            <div className="relative h-full w-full overflow-hidden rounded-[14px]">
+              <Image
+                alt="TruewardHR office entrance and signage"
+                className="object-cover"
+                fill
+                unoptimized
+                sizes="(max-width: 1023px) 40vw, 18vw"
+                src={officePhoto}
+              />
+              <figcaption className="absolute bottom-2 left-2 rounded bg-navy/70 px-2 py-1 text-[10px] font-medium text-white">
+                TruewardHR office
+              </figcaption>
+            </div>
           </figure>
         </div>
       </div>

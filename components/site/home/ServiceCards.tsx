@@ -16,7 +16,8 @@ const hrConsultingService = {
   description:
     "Policies, contracts, disciplinary support and performance systems that keep your workplace fair.",
   href: "/services/hr-consulting",
-  photo: "Photo: one-on-one HR consultation",
+  image: "/images/hr-consultation.jpg",
+  imageAlt: "HR consultant and employee meeting for a one-to-one consultation",
 };
 
 const complianceAuditService = {
@@ -24,7 +25,8 @@ const complianceAuditService = {
   description:
     "A full health check of contracts, files and remittances against Kenyan law, with a clear plan to fix any gaps.",
   href: "/services/compliance-audits",
-  photo: "Photo: personnel files being reviewed",
+  image: "/images/personnel-files-review.jpg",
+  imageAlt: "Personnel files being reviewed for HR compliance",
 };
 
 export function ServiceCards() {
@@ -63,27 +65,32 @@ export function ServiceCards() {
                 <ArrowUpRight aria-hidden="true" className="ml-1.5" size={15} />
               </Link>
             </div>
-            <div className="relative min-h-56 bg-navy-soft md:min-h-full">
-              <Image
-                alt={payrollService.imageAlt}
-                className="object-cover"
-                fill
-                unoptimized
-                sizes="(max-width: 767px) 90vw, 32vw"
-                src={payrollService.image}
-              />
+            <div className="relative min-h-56 bg-white p-[2px] md:min-h-full">
+              <div className="relative h-full min-h-56 overflow-hidden rounded-[14px] md:min-h-full">
+                <Image
+                  alt={payrollService.imageAlt}
+                  className="object-cover"
+                  fill
+                  unoptimized
+                  sizes="(max-width: 767px) 90vw, 32vw"
+                  src={payrollService.image}
+                />
+              </div>
             </div>
           </article>
 
           <article className="overflow-hidden rounded-2xl bg-[#f5e8bd] md:col-span-5">
-            <div
-              aria-label={hrConsultingService.photo}
-              className="flex aspect-[2/1] items-end bg-[#e6d090] p-4"
-              role="img"
-            >
-              <span className="text-[10px] font-medium text-navy/70">
-                {hrConsultingService.photo}
-              </span>
+            <div className="aspect-[2/1] bg-white p-[2px]">
+              <div className="relative h-full overflow-hidden rounded-[14px]">
+                <Image
+                  alt={hrConsultingService.imageAlt}
+                  className="object-cover"
+                  fill
+                  unoptimized
+                  sizes="(max-width: 767px) 90vw, 28vw"
+                  src={hrConsultingService.image}
+                />
+              </div>
             </div>
             <div className="p-6 sm:p-7">
               <h3 className="text-xl font-bold text-navy">
@@ -103,14 +110,17 @@ export function ServiceCards() {
           </article>
 
           <article className="overflow-hidden rounded-2xl bg-[#edf2f8] md:col-span-4">
-            <div
-              aria-label={complianceAuditService.photo}
-              className="flex aspect-[2/1] items-end bg-[#cbd6e7] p-4"
-              role="img"
-            >
-              <span className="text-[10px] font-medium text-navy/70">
-                {complianceAuditService.photo}
-              </span>
+            <div className="aspect-[2/1] bg-white p-[2px]">
+              <div className="relative h-full overflow-hidden rounded-[14px]">
+                <Image
+                  alt={complianceAuditService.imageAlt}
+                  className="object-cover"
+                  fill
+                  unoptimized
+                  sizes="(max-width: 767px) 90vw, 24vw"
+                  src={complianceAuditService.image}
+                />
+              </div>
             </div>
             <div className="p-6">
               <h3 className="text-lg font-bold text-navy">
