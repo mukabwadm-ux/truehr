@@ -109,8 +109,8 @@ export function ServiceCards() {
             </div>
           </article>
 
-          <article className="overflow-hidden rounded-2xl bg-[#edf2f8] md:col-span-4">
-            <div className="aspect-[2/1] bg-white p-[2px]">
+          <article className="flex flex-col overflow-hidden rounded-2xl bg-[#edf2f8] md:col-span-4">
+            <div className="aspect-[2.3/1] bg-white p-[2px]">
               <div className="relative h-full overflow-hidden rounded-[14px]">
                 <Image
                   alt={complianceAuditService.imageAlt}
@@ -122,8 +122,8 @@ export function ServiceCards() {
                 />
               </div>
             </div>
-            <div className="p-6">
-              <h3 className="text-lg font-bold text-navy">
+            <div className="flex flex-1 flex-col items-start p-5">
+              <h3 className="text-xl font-bold text-navy">
                 {complianceAuditService.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">

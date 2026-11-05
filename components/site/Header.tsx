@@ -31,7 +31,7 @@ const siteLinks = [
 ];
 
 const navLinkClass =
-  "inline-flex min-h-10 items-center font-heading text-xs font-semibold text-on-navy transition-colors hover:text-white";
+  "inline-flex min-h-10 items-center font-heading text-[9px] font-semibold text-on-navy transition-colors hover:text-white xl:text-[10px]";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -53,31 +53,33 @@ export function Header() {
       }`}
       data-scrolled={isScrolled}
     >
-      <div className="container flex min-h-16 items-center justify-between gap-6">
+      <div className="container flex min-h-[60px] items-center justify-between gap-6 md:pl-11 md:pr-6">
         <Logo className="text-base" />
 
-        <nav
-          aria-label="Primary navigation"
-          className="hidden items-center gap-6 lg:flex"
-        >
-          <ul className="flex items-center gap-6">
-            {siteLinks.map((link) => (
-              <li key={link.href}>
-                <Link className={navLinkClass} href={link.href}>
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <div className="hidden items-center gap-5 md:flex">
+          <nav aria-label="Primary navigation">
+            <ul className="flex items-center gap-[17px]">
+              {siteLinks.map((link) => (
+                <li key={link.href}>
+                  <Link className={navLinkClass} href={link.href}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-        <div className="hidden lg:block">
-          <Button asChild size="sm" variant="gold">
+          <Button
+            asChild
+            className="min-h-8 px-3 py-1 text-[9px] xl:text-[10px]"
+            size="sm"
+            variant="gold"
+          >
             <Link href="/contact#book">Book a health check</Link>
           </Button>
         </div>
 
-        <div className="lg:hidden">
+        <div className="md:hidden">
           <Sheet>
             <SheetTrigger asChild>
               <Button
